@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/select_location_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -8,11 +10,11 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Colors.blueAccent,
       constraints: const BoxConstraints.expand(),
-      child: const SafeArea(
+      child: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
+            const Expanded(
               child: Column(
                 children: [
                   Padding(
@@ -48,11 +50,17 @@ class HomePage extends StatelessWidget {
               ),
             ),
             FloatingActionButton(
-              onPressed: null,
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SelectLocationPage(),
+                  ),
+                );
+              },
               backgroundColor: Colors.white,
-              child: Icon(Icons.search),
+              child: const Icon(Icons.search),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
           ],
