@@ -24,9 +24,15 @@ class CityRepository {
     ),
   ];
 
-  Future<dynamic> getCityByName(String name) async {
+  Future<List<City>> getCityByName(String name) async {
     await Future.delayed(const Duration(seconds: 2));
 
-    return _cities.firstWhere((city) => city.name == name);
+    final results = _cities.takeWhile((city) => city.name!.contains(name));
+
+    if (results.isEmpty) {
+      throw Exception("Nenhuma cidade encontrada");
+    }
+
+    return results.toList();
   }
 }
