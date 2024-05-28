@@ -63,24 +63,35 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           return ListView.builder(
             itemCount: snapshot.data!.length,
             itemBuilder: (listBuilderContext, listIndex) {
-              return ListTile(
-                leading: const Icon(Icons.location_on),
-                title: Text(
-                  "${snapshot.data![listIndex].name}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  "${snapshot.data![listIndex].state}, ${snapshot.data![listIndex].country}",
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              );
+              return CityListItem(city: snapshot.data![listIndex]);
             },
           );
         },
+      ),
+    );
+  }
+}
+
+class CityListItem extends StatelessWidget {
+  const CityListItem({super.key, required this.city});
+
+  final City city;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: const Icon(Icons.location_on),
+      title: Text(
+        "${city.name}",
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      subtitle: Text(
+        "${city.state}, ${city.country}",
+        style: const TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
