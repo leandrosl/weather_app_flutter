@@ -24,6 +24,8 @@ class CityRepository {
     ),
   ];
 
+  List<City> get cities => _cities;
+
   Future<List<City>> getCityByName(String name) async {
     await Future.delayed(const Duration(seconds: 2));
 
