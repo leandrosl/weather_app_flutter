@@ -28,44 +28,57 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: const TextField(
-          decoration: InputDecoration(
+        title: TextField(
+          decoration: const InputDecoration(
             labelText: 'Digite uma cidade',
           ),
+          onChanged: (text) {
+            setState(() {
+              _cities = _cityRepository.getCityByName(text);
+            });
+          },
         ),
       ),
       body: FutureBuilder<List<City>>(
         future: _cities,
         builder: (ctx, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (listBuilderContext, listIndex) {
-                return ListTile(
-                  leading: const Icon(Icons.location_on),
-                  title: Text(
-                    "${snapshot.data![listIndex].name}",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    "${snapshot.data![listIndex].state}, ${snapshot.data![listIndex].country}",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                );
-              },
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
-          } else if (snapshot.hasError) {
+          }
+
+          if (snapshot.hasError) {
             return Center(
               child: Text(snapshot.error.toString()),
             );
           }
 
-          return const Center(
-            child: CircularProgressIndicator(),
+          if (snapshot.data!.isEmpty) {
+            return const Center(
+              child: Text("Nenhuma cidade encontrada"),
+            );
+          }
+
+          return ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (listBuilderContext, listIndex) {
+              return ListTile(
+                leading: const Icon(Icons.location_on),
+                title: Text(
+                  "${snapshot.data![listIndex].name}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  "${snapshot.data![listIndex].state}, ${snapshot.data![listIndex].country}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
