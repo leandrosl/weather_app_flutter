@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import './viewmodels/city_view_model.dart';
 import './screens/home_page.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CityViewModel(),
+      child: const MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
