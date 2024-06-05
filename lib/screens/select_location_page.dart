@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../repositories/city_repository.dart';
+import 'package:provider/provider.dart';
+import 'package:weather_app_flutter/viewmodels/city_view_model.dart';
 
 import '../models/city.dart';
 
@@ -12,15 +12,9 @@ class SelectLocationPage extends StatefulWidget {
 }
 
 class _SelectLocationPageState extends State<SelectLocationPage> {
-  late CityRepository _cityRepository;
-
-  late Future<List<City>> _cities;
-
   @override
   void initState() {
     super.initState();
-    _cityRepository = CityRepository();
-    _cities = _cityRepository.getCityByName("");
   }
 
   @override
@@ -34,36 +28,36 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           ),
           onChanged: (text) {
             setState(() {
-              _cities = _cityRepository.getCityByName(text);
+              //_cities = _cityRepository.getCityByName(text);
             });
           },
         ),
       ),
-      body: FutureBuilder<List<City>>(
-        future: _cities,
-        builder: (ctx, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
+      body: Consumer<CityViewModel>(
+        builder: (context, value, child) {
+          if (value.state == CityViewModelState.loading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
 
-          if (snapshot.hasError) {
+          /*if (snapshot.hasError) {
             return Center(
               child: Text(snapshot.error.toString()),
             );
-          }
+          }*/
 
-          if (snapshot.data!.isEmpty) {
+          if (value.state == CityViewModelState.success &&
+              value.cities.isEmpty) {
             return const Center(
               child: Text("Nenhuma cidade encontrada"),
             );
           }
 
           return ListView.builder(
-            itemCount: snapshot.data!.length,
+            itemCount: value.cities.length,
             itemBuilder: (listBuilderContext, listIndex) {
-              return CityListItem(city: snapshot.data![listIndex]);
+              return CityListItem(city: value.cities[listIndex]);
             },
           );
         },
