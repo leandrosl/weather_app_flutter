@@ -33,4 +33,15 @@ class CityViewModel extends ChangeNotifier {
     _state = CityViewModelState.success;
     notifyListeners();
   }
+
+  Future<void> getCitiesByName(String name) async {
+    _state = CityViewModelState.loading;
+    notifyListeners();
+
+    _listCities = await _repository.getCityByName(name);
+    notifyListeners();
+
+    _state = CityViewModelState.success;
+    notifyListeners();
+  }
 }
