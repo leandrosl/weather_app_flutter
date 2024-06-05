@@ -30,7 +30,7 @@ class CityRepository {
     await Future.delayed(const Duration(seconds: 2));
 
     return _cities
-        .where((city) => city.name!.toLowerCase().contains(name))
+        .where((city) => city.name!.toLowerCase().contains(name.toLowerCase()))
         .toList();
   }
 }
