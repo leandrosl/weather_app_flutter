@@ -26,10 +26,9 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           decoration: const InputDecoration(
             labelText: 'Digite uma cidade',
           ),
-          onChanged: (text) {
-            setState(() {
-              //_cities = _cityRepository.getCityByName(text);
-            });
+          onChanged: (text) async {
+            //TODO: ver porque as vezes aparece como vazio antes de aparecer a lista
+            await context.read<CityViewModel>().getCitiesByName(text);
           },
         ),
       ),
