@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/city.dart';
 import '../repositories/city_repository.dart';
 
+enum CityViewModelState { initial, loading, success }
+
 class CityViewModel extends ChangeNotifier {
   final CityRepository _repository = CityRepository();
 
@@ -12,13 +14,23 @@ class CityViewModel extends ChangeNotifier {
   late City _selectedCity;
   City get selectedCity => _selectedCity;
 
+  late CityViewModelState _state;
+  CityViewModelState get state => _state;
+
   CityViewModel() {
     _listCities = _repository.cities;
     _selectedCity = _listCities[0];
+    _state = CityViewModelState.initial;
   }
 
   void changeCity(City city) {
+    _state = CityViewModelState.loading;
+    notifyListeners();
+
     _selectedCity = city;
+    notifyListeners();
+
+    _state = CityViewModelState.success;
     notifyListeners();
   }
 }
