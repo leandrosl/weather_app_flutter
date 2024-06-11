@@ -31,6 +31,13 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
             await context.read<CityViewModel>().getCitiesByName(text);
           },
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Settings',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Consumer<CityViewModel>(
         builder: (context, value, child) {
