@@ -8,15 +8,29 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: Text(
+        title: const Text(
           "Configurações",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      body: Center(
-        child: FlutterLogo(),
+      body: Column(
+        children: <Widget>[
+          ListTile(
+            title: const Text(
+              "Modo Escuro",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: const Text("Utilizar o tema escuro no app"),
+            trailing: Checkbox(
+              value: true,
+              onChanged: (value) {},
+            ),
+          ),
+        ],
       ),
     );
   }
