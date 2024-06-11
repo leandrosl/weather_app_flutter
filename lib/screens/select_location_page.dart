@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/settings_page.dart';
 import '../viewmodels/city_view_model.dart';
 import '../models/city.dart';
 
@@ -35,7 +36,13 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           IconButton(
             icon: const Icon(Icons.settings),
             tooltip: 'Settings',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SettingsPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
