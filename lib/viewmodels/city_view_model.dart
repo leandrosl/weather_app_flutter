@@ -11,8 +11,8 @@ class CityViewModel extends ChangeNotifier {
   late List<City> _listCities;
   List<City> get cities => _listCities;
 
-  late City _selectedCity;
-  City get selectedCity => _selectedCity;
+  late City? _selectedCity;
+  City? get selectedCity => _selectedCity;
 
   late CityViewModelState _state;
   CityViewModelState get state => _state;
