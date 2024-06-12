@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../viewmodels/city_view_model.dart';
+import '../models/city.dart';
 import '../screens/select_location_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,6 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var selectedCity = context.read<CityViewModel>().selectedCity;
+
     return Container(
       color: Colors.blueAccent,
       constraints: const BoxConstraints.expand(),
@@ -14,39 +19,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: Text(
-                      'São Paulo, SP - Brazil',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 32.0,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Icon(
-                      Icons.sunny,
-                      color: Colors.amberAccent,
-                      size: 164.0,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: Text(
-                      '27° C',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 28.0,
-                      ),
-                    ),
-                  ),
-                ],
+            Expanded(
+              child: ShowCityWidget(
+                city: selectedCity,
               ),
             ),
             FloatingActionButton(
@@ -66,6 +41,49 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ShowCityWidget extends StatelessWidget {
+  const ShowCityWidget({super.key, required this.city});
+
+  final City city;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Text(
+            '${city.name}, ${city.state} - ${city.country}',
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w300,
+              fontSize: 32.0,
+            ),
+          ),
+        ),
+        const Expanded(
+          child: Icon(
+            Icons.sunny,
+            color: Colors.amberAccent,
+            size: 164.0,
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.all(32.0),
+          child: Text(
+            '27° C',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w300,
+              fontSize: 28.0,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
