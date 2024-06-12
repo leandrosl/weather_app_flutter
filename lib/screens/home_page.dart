@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var selectedCity = context.read<CityViewModel>().selectedCity;
+    City? selectedCity = context.read<CityViewModel>().selectedCity;
 
     return Container(
       color: Colors.blueAccent,
@@ -20,9 +20,11 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: ShowCityWidget(
-                city: selectedCity,
-              ),
+              child: selectedCity != null
+                  ? ShowCityWidget(
+                      city: selectedCity,
+                    )
+                  : const NoSelectedCityWidget(),
             ),
             FloatingActionButton(
               onPressed: () {
@@ -84,6 +86,25 @@ class ShowCityWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class NoSelectedCityWidget extends StatelessWidget {
+  const NoSelectedCityWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        "Clique no botão 'Buscar' para selecionar uma cidade",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w300,
+          fontSize: 24.0,
+        ),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
