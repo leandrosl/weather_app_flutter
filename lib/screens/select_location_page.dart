@@ -18,6 +18,11 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
     super.initState();
   }
 
+  void _changeCity(City city) {
+    context.read<CityViewModel>().changeCity(city);
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +75,11 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           return ListView.builder(
             itemCount: value.cities.length,
             itemBuilder: (listBuilderContext, listIndex) {
-              return CityListItem(city: value.cities[listIndex]);
+              //return CityListItem(city: value.cities[listIndex]);
+              return InkWell(
+                onTap: () => _changeCity(value.cities[listIndex]),
+                child: CityListItem(city: value.cities[listIndex]),
+              );
             },
           );
         },

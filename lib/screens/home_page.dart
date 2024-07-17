@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    City? selectedCity = context.read<CityViewModel>().selectedCity;
+    City? selectedCity = context.watch<CityViewModel>().selectedCity;
 
     return Container(
       color: Colors.blueAccent,
