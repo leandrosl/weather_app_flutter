@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
 
     return MediaQuery.of(context).orientation == Orientation.portrait
         ? _HomePagePortrait(selectedCity: selectedCity)
-        : _HomePageLandscape();
+        : _HomePageLandscape(selectedCity: selectedCity);
   }
 }
 
@@ -34,9 +34,7 @@ class _HomePagePortrait extends StatelessWidget {
           children: [
             Expanded(
               child: selectedCity != null
-                  ? _ShowCityWidgetPortrait(
-                      city: selectedCity,
-                    )
+                  ? _ShowCityWidgetPortrait(city: selectedCity)
                   : _NoSelectedCityWidgetPortrait(),
             ),
             FloatingActionButton(
@@ -127,8 +125,83 @@ class _HomePageLandscape extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Landscape"),
+    return Container(
+      color: Colors.blueAccent,
+      constraints: const BoxConstraints.expand(),
+      child: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: selectedCity != null
+                  ? _ShowCityWidgetLandscape(city: selectedCity)
+                  : _NoSelectedCityWidgetLandscape(),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SelectLocationPage(),
+                  ),
+                );
+              },
+              backgroundColor: Colors.white,
+              child: const Icon(Icons.search),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+          ],
+        ),
+      ),
     );
+  }
+}
+
+class _ShowCityWidgetLandscape extends StatelessWidget {
+  _ShowCityWidgetLandscape({this.city});
+
+  City? city;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              Text("City"),
+              Text("State"),
+              Text("Country"),
+            ],
+          ),
+        ),
+        Column(
+          children: [
+            Icon(
+              Icons.sunny,
+              color: Colors.amberAccent,
+              size: 164.0,
+            ),
+            Text(
+              '27° C',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w300,
+                fontSize: 28.0,
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class _NoSelectedCityWidgetLandscape extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
