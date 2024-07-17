@@ -25,8 +25,6 @@ class _HomePagePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    City? selectedCity = context.watch<CityViewModel>().selectedCity;
-
     return Container(
       color: Colors.blueAccent,
       constraints: const BoxConstraints.expand(),
@@ -63,9 +61,9 @@ class _HomePagePortrait extends StatelessWidget {
 }
 
 class _ShowCityWidgetPortrait extends StatelessWidget {
-  const _ShowCityWidgetPortrait({required this.city});
+  _ShowCityWidgetPortrait({this.city});
 
-  final City city;
+  City? city;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +72,7 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(32.0),
           child: Text(
-            '${city.name}, ${city.state} - ${city.country}',
+            '${city?.name}, ${city?.state} - ${city?.country}',
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w300,
@@ -123,6 +121,10 @@ class _NoSelectedCityWidgetPortrait extends StatelessWidget {
 }
 
 class _HomePageLandscape extends StatelessWidget {
+  _HomePageLandscape({this.selectedCity});
+
+  City? selectedCity;
+
   @override
   Widget build(BuildContext context) {
     return Center(
