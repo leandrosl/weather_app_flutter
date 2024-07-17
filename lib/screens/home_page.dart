@@ -12,6 +12,21 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     City? selectedCity = context.watch<CityViewModel>().selectedCity;
 
+    return MediaQuery.of(context).orientation == Orientation.portrait
+        ? _HomePagePortrait(selectedCity: selectedCity)
+        : _HomePageLandscape();
+  }
+}
+
+class _HomePagePortrait extends StatelessWidget {
+  _HomePagePortrait({this.selectedCity});
+
+  City? selectedCity;
+
+  @override
+  Widget build(BuildContext context) {
+    City? selectedCity = context.watch<CityViewModel>().selectedCity;
+
     return Container(
       color: Colors.blueAccent,
       constraints: const BoxConstraints.expand(),
@@ -21,10 +36,10 @@ class HomePage extends StatelessWidget {
           children: [
             Expanded(
               child: selectedCity != null
-                  ? ShowCityWidget(
+                  ? _ShowCityWidgetPortrait(
                       city: selectedCity,
                     )
-                  : const NoSelectedCityWidget(),
+                  : _NoSelectedCityWidgetPortrait(),
             ),
             FloatingActionButton(
               onPressed: () {
@@ -47,8 +62,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class ShowCityWidget extends StatelessWidget {
-  const ShowCityWidget({super.key, required this.city});
+class _ShowCityWidgetPortrait extends StatelessWidget {
+  const _ShowCityWidgetPortrait({required this.city});
 
   final City city;
 
@@ -90,9 +105,7 @@ class ShowCityWidget extends StatelessWidget {
   }
 }
 
-class NoSelectedCityWidget extends StatelessWidget {
-  const NoSelectedCityWidget({super.key});
-
+class _NoSelectedCityWidgetPortrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
@@ -105,6 +118,15 @@ class NoSelectedCityWidget extends StatelessWidget {
         ),
         textAlign: TextAlign.center,
       ),
+    );
+  }
+}
+
+class _HomePageLandscape extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text("Landscape"),
     );
   }
 }
