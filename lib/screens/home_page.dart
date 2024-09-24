@@ -186,10 +186,10 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
+        Expanded(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "${city?.name}",
@@ -218,23 +218,26 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
             ],
           ),
         ),
-        /*const Column(
-          children: [
-            Icon(
-              Icons.sunny,
-              color: Colors.amberAccent,
-              size: 164.0,
-            ),
-            Text(
-              '27° C',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w300,
-                fontSize: 28.0,
+        const Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.sunny,
+                color: Colors.amberAccent,
+                size: 164.0,
               ),
-            ),
-          ],
-        ),*/
+              Text(
+                '27° C',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 28.0,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
