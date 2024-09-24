@@ -149,7 +149,7 @@ class _HomePageLandscape extends StatelessWidget {
       color: Colors.blueAccent,
       constraints: const BoxConstraints.expand(),
       child: SafeArea(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
@@ -169,7 +169,7 @@ class _HomePageLandscape extends StatelessWidget {
               child: const Icon(Icons.search),
             ),
             const SizedBox(
-              width: 8.0,
+              height: 12.0,
             ),
           ],
         ),
@@ -243,6 +243,16 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
 class _NoSelectedCityWidgetLandscape extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(
+      child: Text(
+        "Clique no botão 'Buscar' para selecionar uma cidade",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w300,
+          fontSize: 28.0,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
