@@ -69,13 +69,33 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(32.0),
-          child: Text(
-            '${city?.name}, ${city?.state} - ${city?.country}',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w300,
-              fontSize: 32.0,
-            ),
+          child: Column(
+            children: [
+              Text(
+                '${city?.name}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
+              Text(
+                '${city?.state}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
+              Text(
+                '${city?.country}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
+            ],
           ),
         ),
         const Expanded(
@@ -168,16 +188,37 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        Center(
           child: Column(
             children: [
-              Text("City"),
-              Text("State"),
-              Text("Country"),
+              Text(
+                "${city?.name}",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
+              Text(
+                "${city?.state}",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
+              Text(
+                "${city?.country}",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 32.0,
+                ),
+              ),
             ],
           ),
         ),
-        Column(
+        /*const Column(
           children: [
             Icon(
               Icons.sunny,
@@ -193,7 +234,7 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),*/
       ],
     );
   }
