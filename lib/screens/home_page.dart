@@ -19,9 +19,9 @@ class HomePage extends StatelessWidget {
 }
 
 class _HomePagePortrait extends StatelessWidget {
-  _HomePagePortrait({this.selectedCity});
+  const _HomePagePortrait({this.selectedCity});
 
-  City? selectedCity;
+  final City? selectedCity;
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +59,9 @@ class _HomePagePortrait extends StatelessWidget {
 }
 
 class _ShowCityWidgetPortrait extends StatelessWidget {
-  _ShowCityWidgetPortrait({this.city});
+  const _ShowCityWidgetPortrait({this.city});
 
-  City? city;
+  final City? city;
 
   @override
   Widget build(BuildContext context) {
@@ -139,9 +139,9 @@ class _NoSelectedCityWidgetPortrait extends StatelessWidget {
 }
 
 class _HomePageLandscape extends StatelessWidget {
-  _HomePageLandscape({this.selectedCity});
+  const _HomePageLandscape({this.selectedCity});
 
-  City? selectedCity;
+  final City? selectedCity;
 
   @override
   Widget build(BuildContext context) {
@@ -179,9 +179,9 @@ class _HomePageLandscape extends StatelessWidget {
 }
 
 class _ShowCityWidgetLandscape extends StatelessWidget {
-  _ShowCityWidgetLandscape({this.city});
+  const _ShowCityWidgetLandscape({this.city});
 
-  City? city;
+  final City? city;
 
   @override
   Widget build(BuildContext context) {
