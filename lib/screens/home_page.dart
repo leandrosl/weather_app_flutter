@@ -105,11 +105,11 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
             size: 164.0,
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.all(32.0),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
           child: Text(
-            '27° C',
-            style: TextStyle(
+            '${city?.temperature}° C',
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w300,
               fontSize: 28.0,
@@ -218,18 +218,18 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
             ],
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.sunny,
                 color: Colors.amberAccent,
                 size: 164.0,
               ),
               Text(
-                '27° C',
-                style: TextStyle(
+                '${city?.temperature}° C',
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w300,
                   fontSize: 28.0,
