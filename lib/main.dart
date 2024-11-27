@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app_flutter/repositories/city_repository.dart';
 
 import './viewmodels/city_view_model.dart';
 import './screens/home_page.dart';
@@ -7,7 +8,7 @@ import './screens/home_page.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (_) => CityViewModel(),
+      create: (_) => CityViewModel(CityRepository()),
       child: const MyApp(),
     ),
   );

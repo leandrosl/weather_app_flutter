@@ -6,7 +6,7 @@ import '../repositories/city_repository.dart';
 enum CityViewModelState { initial, loading, success }
 
 class CityViewModel extends ChangeNotifier {
-  final CityRepository _repository = CityRepository();
+  final CityRepository _repository;
 
   late List<City> _listCities;
   List<City> get cities => _listCities;
@@ -17,7 +17,7 @@ class CityViewModel extends ChangeNotifier {
   late CityViewModelState _state;
   CityViewModelState get state => _state;
 
-  CityViewModel() {
+  CityViewModel(this._repository) {
     _listCities = _repository.cities;
     _selectedCity = _listCities[0];
     _state = CityViewModelState.initial;
