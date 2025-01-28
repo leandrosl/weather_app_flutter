@@ -7,8 +7,16 @@ import './screens/home_page.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CityViewModel(CityRepository()),
+    MultiProvider(
+      providers: [
+        Provider(
+          create: (context) => CityRepository(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CityViewModel(
+              Provider.of<CityRepository>(context, listen: false)),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
