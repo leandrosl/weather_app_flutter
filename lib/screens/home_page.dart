@@ -71,29 +71,24 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
           padding: const EdgeInsets.all(32.0),
           child: Column(
             children: [
-              Text(
-                '${city?.name}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
-              ),
-              Text(
-                '${city?.state}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
-              ),
-              Text(
-                '${city?.country}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 4.0,
+                children: [
+                  const Icon(
+                    Icons.pin_drop,
+                    color: Colors.white,
+                    size: 24.0,
+                  ),
+                  Text(
+                    '${city?.name}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32.0,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
