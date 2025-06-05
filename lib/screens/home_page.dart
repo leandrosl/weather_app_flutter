@@ -65,53 +65,68 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 4.0,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 4.0,
-                children: [
-                  const Icon(
-                    Icons.location_on,
-                    color: Colors.white,
-                    size: 24.0,
-                  ),
-                  Text(
-                    '${city?.name}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32.0,
-                    ),
-                  ),
-                ],
+              const Icon(
+                Icons.location_on,
+                color: Colors.white,
+                size: 24.0,
+              ),
+              Text(
+                '${city?.name}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32.0,
+                ),
               ),
             ],
           ),
-        ),
-        const Expanded(
-          child: Icon(
-            Icons.sunny,
-            color: Colors.amberAccent,
-            size: 164.0,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Text(
-            '${city?.temperature}° C',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w300,
-              fontSize: 28.0,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 24.0,
+              horizontal: 16.0,
+            ),
+            child: Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${city?.temperature?.toInt()}°',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 72.0,
+                      ),
+                    ),
+                    const Text(
+                      'Limpo',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 24.0,
+                      ),
+                    ),
+                  ],
+                ),
+                const Expanded(
+                  child: Icon(
+                    Icons.sunny,
+                    color: Colors.amberAccent,
+                    size: 132.0,
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
