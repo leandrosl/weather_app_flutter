@@ -76,7 +76,7 @@ class _ShowCityWidgetPortrait extends StatelessWidget {
                 spacing: 4.0,
                 children: [
                   const Icon(
-                    Icons.pin_drop,
+                    Icons.location_on,
                     color: Colors.white,
                     size: 24.0,
                   ),
