@@ -112,98 +112,81 @@ class _HomePageLandscape extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blueAccent,
-      constraints: const BoxConstraints.expand(),
       child: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: selectedCity != null
-                  ? _ShowCityWidgetLandscape(city: selectedCity)
-                  : Container(),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SelectLocationPage(),
+            Container(
+              height: 32.0,
+              child: Row(
+                spacing: 4.0,
+                children: [
+                  const Icon(
+                    Icons.location_on,
+                    color: Colors.white,
+                    size: 24.0,
                   ),
-                );
-              },
-              backgroundColor: Colors.white,
-              child: const Icon(Icons.search),
+                  Text(
+                    '${selectedCity?.name}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 12.0,
+            SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 4.0,
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 24.0,
+                      horizontal: 16.0,
+                    ),
+                    child: Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${selectedCity?.temperature?.toInt()}°',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 72.0,
+                              ),
+                            ),
+                            const Text(
+                              'Limpo',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Expanded(
+                          child: Icon(
+                            Icons.sunny,
+                            color: Colors.amberAccent,
+                            size: 132.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _ShowCityWidgetLandscape extends StatelessWidget {
-  const _ShowCityWidgetLandscape({this.city});
-
-  final City? city;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "${city?.name}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
-              ),
-              Text(
-                "${city?.state}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
-              ),
-              Text(
-                "${city?.country}",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 32.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.sunny,
-                color: Colors.amberAccent,
-                size: 164.0,
-              ),
-              Text(
-                '${city?.temperature}° C',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 28.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
