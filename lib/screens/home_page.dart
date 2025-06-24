@@ -25,107 +25,79 @@ class _HomePagePortrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueAccent,
-      constraints: const BoxConstraints.expand(),
-      child: SafeArea(
-        child: Column(
+    return Scaffold(
+      backgroundColor: Colors.blueAccent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 4.0,
           children: [
-            Expanded(
-              child: selectedCity != null
-                  ? _ShowCityWidgetPortrait(city: selectedCity)
-                  : Container(),
+            const Icon(
+              Icons.location_on,
+              color: Colors.white,
+              size: 24.0,
             ),
-            FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SelectLocationPage(),
-                  ),
-                );
-              },
-              backgroundColor: Colors.white,
-              child: const Icon(Icons.search),
-            ),
-            const SizedBox(
-              height: 8.0,
+            Text(
+              '${selectedCity?.name}',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 32.0,
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _ShowCityWidgetPortrait extends StatelessWidget {
-  const _ShowCityWidgetPortrait({this.city});
-
-  final City? city;
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 4.0,
-            children: [
-              const Icon(
-                Icons.location_on,
-                color: Colors.white,
-                size: 24.0,
-              ),
-              Text(
-                '${city?.name}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32.0,
-                ),
-              ),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 4.0,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 24.0,
-              horizontal: 16.0,
-            ),
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24.0,
+                  horizontal: 16.0,
+                ),
+                child: Row(
                   children: [
-                    Text(
-                      '${city?.temperature?.toInt()}°',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 72.0,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${selectedCity?.temperature?.toInt()}°',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 72.0,
+                          ),
+                        ),
+                        const Text(
+                          'Limpo',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 24.0,
+                          ),
+                        ),
+                      ],
                     ),
-                    const Text(
-                      'Limpo',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 24.0,
+                    const Expanded(
+                      child: Icon(
+                        Icons.sunny,
+                        color: Colors.amberAccent,
+                        size: 132.0,
                       ),
                     ),
                   ],
                 ),
-                const Expanded(
-                  child: Icon(
-                    Icons.sunny,
-                    color: Colors.amberAccent,
-                    size: 132.0,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
