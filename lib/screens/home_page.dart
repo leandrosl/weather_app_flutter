@@ -165,7 +165,7 @@ class _HomePageLandscape extends StatelessWidget {
             Expanded(
               child: selectedCity != null
                   ? _ShowCityWidgetLandscape(city: selectedCity)
-                  : _NoSelectedCityWidgetLandscape(),
+                  : Container(),
             ),
             FloatingActionButton(
               onPressed: () {
@@ -249,23 +249,6 @@ class _ShowCityWidgetLandscape extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _NoSelectedCityWidgetLandscape extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        "Clique no botão 'Buscar' para selecionar uma cidade",
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w300,
-          fontSize: 28.0,
-        ),
-        textAlign: TextAlign.center,
-      ),
     );
   }
 }
