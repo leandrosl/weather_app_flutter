@@ -29,7 +29,14 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
-  # fonts:
+  fonts:
+    - family: TitilliumWeb
+      fonts:
+        - asset: custom_fonts/titillium_web/TitilliumWeb-Bold.ttf
+          weight: 900
+        - asset: custom_fonts/titillium_web/TitilliumWeb-SemiBold.ttf
+          weight: 600
+        - asset: custom_fonts/titillium_web/TitilliumWeb-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

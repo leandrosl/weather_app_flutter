@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurple,
         ),
         useMaterial3: true,
+        fontFamily: 'TitilliumWeb',
       ),
       debugShowCheckedModeBanner: false,
       home: const Scaffold(
