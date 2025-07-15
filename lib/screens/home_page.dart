@@ -52,47 +52,66 @@ class _HomePagePortrait extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
+            horizontal: 32.0,
             vertical: 4.0,
           ),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 24.0,
-                  horizontal: 16.0,
-                ),
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${selectedCity?.temperature?.toInt()}°',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 72.0,
-                          ),
+              Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        '${selectedCity?.temperature?.toInt()}°',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 72.0,
                         ),
-                        const Text(
-                          'Limpo',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 24.0,
-                          ),
+                      ),
+                      const Text(
+                        'Limpo',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 24.0,
                         ),
-                      ],
-                    ),
-                    const Expanded(
+                      ),
+                    ],
+                  ),
+                  const Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
                       child: Icon(
                         Icons.sunny,
                         color: Colors.amberAccent,
                         size: 132.0,
                       ),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsetsGeometry.only(top: 24.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '28° | 14°',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ),
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Sensação térmica de 27°',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
                 ),
               ),
             ],
