@@ -60,6 +60,7 @@ class _HomePagePortrait extends StatelessWidget {
               Row(
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         '${selectedCity?.temperature?.toInt()}°',
