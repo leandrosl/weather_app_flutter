@@ -265,23 +265,58 @@ class NextDayTemperatureItem extends StatelessWidget {
 class AirQualityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      color: Colors.grey,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 12.0,
-          horizontal: 12.0,
-        ),
-        child: Column(
-          spacing: 10.0,
-          children: [
-            Text(
-              "Qualidade do Ar",
-            ),
-            Text(
-              "Moderada(77)",
-            ),
-          ],
+    return SizedBox(
+      width: double.infinity,
+      child: Card(
+        color: Colors.grey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 12.0,
+            horizontal: 12.0,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            spacing: 10.0,
+            children: [
+              const Text(
+                "Qualidade do Ar",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              const Text(
+                "Moderada(77)",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 16.0,
+                    //color: Colors.red,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(12.0),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 120.0,
+                    height: 16.0,
+                    decoration: BoxDecoration(
+                      color: Colors.amber.shade400,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(12.0),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
