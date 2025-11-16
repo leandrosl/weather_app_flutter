@@ -115,6 +115,14 @@ class _HomePagePortrait extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 48.0,
+              ),
+              NextDaysTemperaturesCard(),
+              const SizedBox(
+                height: 12.0,
+              ),
+              AirQualityCard(),
             ],
           ),
         ),
@@ -203,6 +211,75 @@ class _HomePageLandscape extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NextDaysTemperaturesCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.grey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12.0,
+          horizontal: 12.0,
+        ),
+        child: Column(
+          spacing: 10.0,
+          children: [
+            NextDayTemperatureItem(),
+            NextDayTemperatureItem(),
+            NextDayTemperatureItem(),
+            NextDayTemperatureItem(),
+            NextDayTemperatureItem(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NextDayTemperatureItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        Expanded(
+          child: Text("Seg."),
+        ),
+        Text("26°"),
+        SizedBox(
+          width: 4.0,
+        ),
+        Text("16°"),
+      ],
+    );
+  }
+}
+
+class AirQualityCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      color: Colors.grey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12.0,
+          horizontal: 12.0,
+        ),
+        child: Column(
+          spacing: 10.0,
+          children: [
+            Text(
+              "Qualidade do Ar",
+            ),
+            Text(
+              "Moderada(77)",
             ),
           ],
         ),
