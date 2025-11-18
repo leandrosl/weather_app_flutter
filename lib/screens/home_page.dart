@@ -127,9 +127,13 @@ class _HomePagePortrait extends StatelessWidget {
                 height: 12.0,
               ),
               const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: UvLevelCard(),
+                  ),
+                  Expanded(
+                    child: HumidityLevelCard(),
                   ),
                 ],
               ),
@@ -353,6 +357,39 @@ class UvLevelCard extends StatelessWidget {
             Spacer(),
             Text(
               "Baixo",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HumidityLevelCard extends StatelessWidget {
+  const HumidityLevelCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 150.0,
+      child: Card(
+        color: Colors.grey,
+        child: Column(
+          children: [
+            Text(
+              "Umidade",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Spacer(),
+            Text(
+              "60%",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16.0,
