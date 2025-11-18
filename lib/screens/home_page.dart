@@ -123,6 +123,16 @@ class _HomePagePortrait extends StatelessWidget {
                 height: 12.0,
               ),
               AirQualityCard(),
+              const SizedBox(
+                height: 12.0,
+              ),
+              const Row(
+                children: [
+                  Expanded(
+                    child: UvLevelCard(),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -317,6 +327,39 @@ class AirQualityCard extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class UvLevelCard extends StatelessWidget {
+  const UvLevelCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 150.0,
+      child: Card(
+        color: Colors.grey,
+        child: Column(
+          children: [
+            Text(
+              "Índice UV",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Spacer(),
+            Text(
+              "Baixo",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            Spacer(),
+          ],
         ),
       ),
     );
