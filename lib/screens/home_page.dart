@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../viewmodels/city_view_model.dart';
 import '../models/city.dart';
-import '../screens/select_location_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -118,11 +117,11 @@ class _HomePagePortrait extends StatelessWidget {
               const SizedBox(
                 height: 48.0,
               ),
-              NextDaysTemperaturesCard(),
+              const NextDaysTemperaturesCard(),
               const SizedBox(
                 height: 12.0,
               ),
-              AirQualityCard(),
+              const AirQualityCard(),
               const SizedBox(
                 height: 12.0,
               ),
@@ -245,12 +244,14 @@ class _HomePageLandscape extends StatelessWidget {
 }
 
 class NextDaysTemperaturesCard extends StatelessWidget {
+  const NextDaysTemperaturesCard({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return const Card(
       color: Colors.grey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           vertical: 12.0,
           horizontal: 12.0,
         ),
@@ -270,6 +271,8 @@ class NextDaysTemperaturesCard extends StatelessWidget {
 }
 
 class NextDayTemperatureItem extends StatelessWidget {
+  const NextDayTemperatureItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Row(
@@ -288,6 +291,8 @@ class NextDayTemperatureItem extends StatelessWidget {
 }
 
 class AirQualityCard extends StatelessWidget {
+  const AirQualityCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
