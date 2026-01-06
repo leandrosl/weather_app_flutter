@@ -137,6 +137,17 @@ class _HomePagePortrait extends StatelessWidget {
                   ),
                 ],
               ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: WindSpeedCard(),
+                  ),
+                  Expanded(
+                    child: VisibilityLevelCard(),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -390,6 +401,72 @@ class HumidityLevelCard extends StatelessWidget {
             Spacer(),
             Text(
               "60%",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WindSpeedCard extends StatelessWidget {
+  const WindSpeedCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 150.0,
+      child: Card(
+        color: Colors.grey,
+        child: Column(
+          children: [
+            Text(
+              "Vento",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Spacer(),
+            Text(
+              "5 Km/h",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class VisibilityLevelCard extends StatelessWidget {
+  const VisibilityLevelCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 150.0,
+      child: Card(
+        color: Colors.grey,
+        child: Column(
+          children: [
+            Text(
+              "Visibilidade",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            Spacer(),
+            Text(
+              "8,2 km",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16.0,
