@@ -248,9 +248,9 @@ class NextDaysTemperaturesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      color: Colors.grey,
-      child: Padding(
+    return Card(
+      color: Colors.white.withValues(alpha: 0.2),
+      child: const Padding(
         padding: EdgeInsets.symmetric(
           vertical: 12.0,
           horizontal: 12.0,
@@ -298,7 +298,7 @@ class AirQualityCard extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Card(
-        color: Colors.grey,
+        color: Colors.white.withValues(alpha: 0.2),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 12.0,
@@ -358,11 +358,11 @@ class UvLevelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 150.0,
       child: Card(
-        color: Colors.grey,
-        child: Column(
+        color: Colors.white.withValues(alpha: 0.2),
+        child: const Column(
           children: [
             Text(
               "Índice UV",
@@ -391,11 +391,11 @@ class HumidityLevelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 150.0,
       child: Card(
-        color: Colors.grey,
-        child: Column(
+        color: Colors.white.withValues(alpha: 0.2),
+        child: const Column(
           children: [
             Text(
               "Umidade",
@@ -424,11 +424,11 @@ class WindSpeedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 150.0,
       child: Card(
-        color: Colors.grey,
-        child: Column(
+        color: Colors.white.withValues(alpha: 0.2),
+        child: const Column(
           children: [
             Text(
               "Vento",
@@ -457,11 +457,11 @@ class VisibilityLevelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 150.0,
       child: Card(
-        color: Colors.grey,
-        child: Column(
+        color: Colors.white.withValues(alpha: 0.2),
+        child: const Column(
           children: [
             Text(
               "Visibilidade",
