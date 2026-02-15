@@ -27,19 +27,27 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: TextField(
-          decoration: const InputDecoration(
-            labelText: 'Digite uma cidade',
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          "Cidades",
+          style: TextStyle(
+            color: Colors.grey,
           ),
-          onChanged: (text) async {
-            //TODO: ver porque as vezes aparece como vazio antes de aparecer a lista
-            await context.read<CityViewModel>().getCitiesByName(text);
-          },
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.settings),
+            icon: const Icon(
+              Icons.search,
+              color: Colors.grey,
+            ),
+            tooltip: 'Search',
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.grey,
+            ),
             tooltip: 'Settings',
             onPressed: () {
               Navigator.of(context).push(
