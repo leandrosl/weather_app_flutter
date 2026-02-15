@@ -134,29 +134,29 @@ class CityListItem extends StatelessWidget {
                   ),
                 ],
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.sunny,
                         color: Colors.amber,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            '26°',
-                            style: TextStyle(
+                            '${city.temperature?.toInt()}°',
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18.0,
                             ),
                           ),
-                          Text(
+                          const Text(
                             '16° | 26°',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
