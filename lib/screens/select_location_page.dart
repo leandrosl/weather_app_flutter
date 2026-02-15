@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app_flutter/screens/search_city_page.dart';
 
 import '../screens/settings_page.dart';
 import '../viewmodels/city_view_model.dart';
@@ -41,7 +42,14 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
               color: Colors.grey,
             ),
             tooltip: 'Search',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchCityPage(),
+                ),
+              );
+            },
           ),
           IconButton(
             icon: const Icon(
