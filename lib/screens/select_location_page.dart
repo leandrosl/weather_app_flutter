@@ -103,18 +103,73 @@ class CityListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: const Icon(Icons.location_on),
-      title: Text(
-        "${city.name}",
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+    return Padding(
+      padding: const EdgeInsetsGeometry.symmetric(
+        horizontal: 16.0,
       ),
-      subtitle: Text(
-        "${city.state}, ${city.country}",
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsetsGeometry.symmetric(
+            vertical: 16.0,
+            horizontal: 16.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${city.name}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  Text(
+                    "${city.state}, ${city.country}",
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.sunny,
+                        color: Colors.amber,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '26°',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                            ),
+                          ),
+                          Text(
+                            '16° | 26°',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
