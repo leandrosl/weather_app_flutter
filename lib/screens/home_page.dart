@@ -151,6 +151,29 @@ class _HomePagePortrait extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        height: 42.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              icon: const Icon(
+                Icons.list,
+                color: Colors.white,
+              ),
+              onPressed: () => print('List'),
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () => print('Search'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
