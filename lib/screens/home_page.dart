@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app_flutter/screens/search_city_page.dart';
 import 'package:weather_app_flutter/screens/select_location_page.dart';
 
 import '../viewmodels/city_view_model.dart';
@@ -175,7 +176,12 @@ class _HomePagePortrait extends StatelessWidget {
                 Icons.search,
                 color: Colors.white,
               ),
-              onPressed: () => print('Search'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchCityPage(),
+                ),
+              ),
             ),
           ],
         ),
