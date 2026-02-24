@@ -12,15 +12,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     City? selectedCity = context.watch<CityViewModel>().selectedCity;
-
-    return MediaQuery.of(context).orientation == Orientation.portrait
-        ? _HomePagePortrait(selectedCity: selectedCity)
-        : _HomePageLandscape(selectedCity: selectedCity);
+    return _HomePageView(selectedCity: selectedCity);
   }
 }
 
-class _HomePagePortrait extends StatelessWidget {
-  const _HomePagePortrait({this.selectedCity});
+class _HomePageView extends StatelessWidget {
+  const _HomePageView({this.selectedCity});
 
   final City? selectedCity;
 
@@ -181,94 +178,6 @@ class _HomePagePortrait extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const SearchCityPage(),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _HomePageLandscape extends StatelessWidget {
-  const _HomePageLandscape({this.selectedCity});
-
-  final City? selectedCity;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueAccent,
-      child: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 32.0,
-              child: Row(
-                spacing: 4.0,
-                children: [
-                  const Icon(
-                    Icons.location_on,
-                    color: Colors.white,
-                    size: 24.0,
-                  ),
-                  Text(
-                    '${selectedCity?.name}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 4.0,
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 24.0,
-                      horizontal: 16.0,
-                    ),
-                    child: Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${selectedCity?.temperature?.toInt()}°',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 72.0,
-                              ),
-                            ),
-                            const Text(
-                              'Limpo',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 24.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Expanded(
-                          child: Icon(
-                            Icons.sunny,
-                            color: Colors.amberAccent,
-                            size: 132.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
