@@ -67,38 +67,40 @@ class _SelectLocationPageState extends State<SelectLocationPage> {
           ),
         ],
       ),
-      body: Consumer<CityViewModel>(
-        builder: (context, value, child) {
-          if (value.state == CityViewModelState.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          /*if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          }*/
-
-          if (value.state == CityViewModelState.success &&
-              value.cities.isEmpty) {
-            return const Center(
-              child: Text("Nenhuma cidade encontrada"),
-            );
-          }
-
-          return ListView.builder(
-            itemCount: value.cities.length,
-            itemBuilder: (listBuilderContext, listIndex) {
-              //return CityListItem(city: value.cities[listIndex]);
-              return InkWell(
-                onTap: () => _changeCity(value.cities[listIndex]),
-                child: CityListItem(city: value.cities[listIndex]),
+      body: SafeArea(
+        child: Consumer<CityViewModel>(
+          builder: (context, value, child) {
+            if (value.state == CityViewModelState.loading) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
-            },
-          );
-        },
+            }
+
+            /*if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            }*/
+
+            if (value.state == CityViewModelState.success &&
+                value.cities.isEmpty) {
+              return const Center(
+                child: Text("Nenhuma cidade encontrada"),
+              );
+            }
+
+            return ListView.builder(
+              itemCount: value.cities.length,
+              itemBuilder: (listBuilderContext, listIndex) {
+                //return CityListItem(city: value.cities[listIndex]);
+                return InkWell(
+                  onTap: () => _changeCity(value.cities[listIndex]),
+                  child: CityListItem(city: value.cities[listIndex]),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
