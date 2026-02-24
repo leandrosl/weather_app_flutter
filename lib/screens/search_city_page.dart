@@ -20,11 +20,14 @@ class SearchCityPage extends StatelessWidget {
           cursorColor: Colors.amber,
         ),
       ),
-      body: const Center(
-        /*child: CircularProgressIndicator(
-          color: Colors.amber,
-        ),*/
-        child: Text("Digite o nome da cidade desejada na campo de busca acima"),
+      body: const SafeArea(
+        child: Center(
+          /*child: CircularProgressIndicator(
+            color: Colors.amber,
+          ),*/
+          child:
+              Text("Digite o nome da cidade desejada na campo de busca acima"),
+        ),
       ),
     );
   }
